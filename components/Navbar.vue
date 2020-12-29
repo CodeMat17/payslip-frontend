@@ -65,6 +65,9 @@
         </div>
       </div>
     </header>
+    <div v-if="bye" class="tracking-widest h-screen flex justify-center items-center bg-gray-700 text-gray-400 font-semibold text-xl">
+      Logging you out!!!
+    </div>
   </div>
 </template>
 
@@ -74,6 +77,7 @@ export default {
   data() {
     return {
       showMenu: false,
+      bye: false,
     }
   },
   computed: {
@@ -81,7 +85,9 @@ export default {
   },
   methods: {
     async logout() {
+      this.bye = true;
       await this.$auth.logout();
+      this.bye = false;
     }
   }
 };
