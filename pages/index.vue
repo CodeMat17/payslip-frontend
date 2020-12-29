@@ -1,10 +1,14 @@
 <template>
   <div>
+    <div v-if="$nuxt.isOffline" class="px-4 py-2 bg-red-200 text-center text-red-700">
+      You are offline. Check your internet connection.
+    </div>
     <div class="fixed z-50 flex-1 w-full">
       <home-header />
     </div>
-
+    
     <div class="w-full h-screen bg-gray-700 px-4 py-6 flex">
+      
       <div
         class="w-full flex flex-col sm:flex-row items-center justify-center sm:justify-between"
       >
@@ -28,14 +32,15 @@
             </div>
           </div>
           <div class="mt-16 w-full">
-            <n-link to="/login">
-              <button
-                type="button"
-                class="block w-full sm:max-w-sm sm:mx-auto bg-yellow-600 text-gray-200 text-2xl font-bold uppercase py-2 hover:bg-yellow-500 hover:text-gray-700 rounded tracking-widest"
-              >
-                Login
-              </button>
-            </n-link>
+            <!-- <n-link to="/login"> -->
+            <button
+              @click="gotoLogin"
+              type="button"
+              class="block w-full sm:max-w-sm sm:mx-auto bg-yellow-600 text-gray-200 text-2xl font-bold uppercase py-2 hover:bg-yellow-500 hover:text-gray-700 rounded tracking-widest"
+            >
+              Login
+            </button>
+            <!-- </n-link> -->
           </div>
         </div>
       </div>

@@ -77,14 +77,6 @@
               submit
             </button>
 
-            <p class="text-gray-400 text-lg mt-4">
-              Forgot password?
-              <n-link to="/"
-                ><span class="text-yellow-500 font-semibold"
-                  >Click here.</span
-                ></n-link
-              >
-            </p>
             <p class="text-gray-400 text-lg">
               Have no account?
               <n-link to="/register"
