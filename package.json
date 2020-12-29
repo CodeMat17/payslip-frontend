@@ -14,7 +14,8 @@
     "@nuxtjs/dotenv": "^1.4.1",
     "core-js": "^3.6.5",
     "nuxt": "^2.14.12",
-    "nuxt-tv-toast": "^1.0.5"
+    "nuxt-tv-toast": "^1.0.5",
+    "vuelidate": "^0.7.6"
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^3.1.0"
