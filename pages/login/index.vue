@@ -138,11 +138,11 @@ export default {
             type: "success",
             title: "Success",
             message: "You are logged in.",
-          });
-          this.email = "";
-          this.password = "";
+          });          
           this.loading = false;
           this.$router.push("/payslip");
+          this.email = "";
+          this.password = "";
         } catch (e) {
           this.loading = false;
           this.$toast.show({

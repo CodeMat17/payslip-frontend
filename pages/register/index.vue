@@ -226,13 +226,13 @@ export default {
             title: "Success",
             message: "Done!. You can login now.",
           });
-          this.loading = false;
+          this.loading = false;          
+          this.$router.push("/login");
           this.staffNo = null;
           this.username = "";
           this.email = "";
           this.password = "";
           this.confirmPassword = "";
-          this.$router.push("/login");
         } catch (e) {
           this.loading = false;
           this.$toast.show({
