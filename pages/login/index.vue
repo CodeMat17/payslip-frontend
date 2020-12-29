@@ -41,9 +41,6 @@
               class="text-red-500"
               >Email is required</span
             >
-            <span v-if="!$v.email.email && $v.email.$dirty" class="text-red-500"
-              >Enter a valid email</span
-            >
             <br />
 
             <input
@@ -100,78 +97,6 @@
         </form>
       </div>
     </div>
-
-    <!-- <div v-show="error" class="flex fixed bottom-0 inset-x-0">
-      <div class="w-full">
-        <div
-          class="w-full bg-gray-200 rounded-t-lg border-red-300 border p-3 shadow-lg"
-        >
-          <div class="flex justify-between items-center">
-            <div class="flex items-center h-24 justify-center">
-              <div class="px-2 flex">
-                <img src="@/assets/svg/warning.svg" />
-              </div>
-              <div class="ml-2 mr-6">
-                <span class="font-semibold text-xl text-red-500">{{
-                  error
-                }}</span>
-              </div>
-            </div>
-            <div class="px-2 flex ml-8">
-              <button type="button">
-                <svg
-                  class="fill-current text-red-600"
-                  @click="error = !error"
-                  style="width: 24px; height: 24px"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
-
-    <!-- <div v-show="loginError" class="flex fixed bottom-0 inset-x-0">
-      <div class="w-full">
-        <div
-          class="w-full bg-gray-200 rounded-t-lg border-red-300 border p-3 shadow-lg"
-        >
-          <div class="flex justify-between items-center">
-            <div class="flex items-center h-24 justify-center">
-              <div class="px-2 flex">
-                <img src="@/assets/svg/warning.svg" />
-              </div>
-              <div class="ml-2 mr-6">
-                <span class="font-semibold text-xl text-red-500">{{
-                  loginErrorMsg
-                }}</span>
-              </div>
-            </div>
-            <div class="px-2 flex ml-8">
-              <button type="button">
-                <svg
-                  class="fill-current text-red-600"
-                  @click="loginError = !loginError"
-                  style="width: 24px; height: 24px"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
   </div>
 </template>
 
