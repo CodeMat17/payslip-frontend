@@ -101,7 +101,7 @@
 </template>
 
 <script>
-import { required, email } from "vuelidate/lib/validators";
+import { required } from "vuelidate/lib/validators";
 import Vue from "vue";
 import Vuelidate from "vuelidate";
 Vue.use(Vuelidate);
