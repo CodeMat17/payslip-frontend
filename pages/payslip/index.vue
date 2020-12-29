@@ -69,7 +69,7 @@
             <div class="text-gray-600 space-y-3">
               <p class="truncate">CONPSS Cons Salary02</p>
               <p>WEIGHING ALLW.</p>
-              <p class="font-bold">TOTAL</p>
+              <p class="text-gray-900 font-bold">TOTAL</p>
             </div>
             <div class="ml-2 text-gray-900 text-right space-y-3">
               <p>{{ loggedInUser.conpssSal }}</p>
@@ -94,7 +94,7 @@
               <p>UNION DUES</p>
               <p>COOP CONTRIBUTION</p>
               <p>COOP LOAN</p>
-              <p class="font-bold">TOTAL</p>
+              <p class="text-gray-900 font-bold">TOTAL</p>
             </div>
             <div class="ml-2 text-gray-900 text-right space-y-3">
               <p>{{ loggedInUser.nhf }}</p>
@@ -119,7 +119,7 @@
             <div class="text-gray-600 space-y-3">
               <p>TOTAL GROSS EARNINGS</p>
               <p>TOTAL GROSS DEDUCTIONS</p>
-              <p class="font-bold">TOTAL NET EARNINGS</p>
+              <p class="text-gray-900 font-bold">TOTAL NET EARNINGS</p>
             </div>
             <div class="ml-2 text-gray-900 text-right space-y-3">
               <p>{{ loggedInUser.totalGrossEarning }}</p>
