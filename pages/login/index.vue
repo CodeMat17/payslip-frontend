@@ -186,8 +186,8 @@ export default {
   middleware: "guest",
   data() {
     return {
-      email: "matthewnfvcb@gmail.com",
-      password: "mmmmmm",
+      email: "",
+      password: "",
       // error: null,
       // errorMsg: null,
       // loginError: null,
