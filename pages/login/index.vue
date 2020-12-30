@@ -17,22 +17,19 @@
           >
             Login
           </h3>
-          <p class="text-red-500 text-sm">
-            *<span class="text-gray-500"
-              >You must be a subscriber to have the information you seek.
-              Contact admin for more info.</span
-            >
-          </p>
         </div>
 
         <form>
           <div class="">
+            <label class="text-gray-500"
+              ><span class="text-red-500">*</span>Email</label
+            >
             <input
               type="email"
               id="email"
               name="email"
               v-model.trim="$v.email.$model"
-              placeholder="Email"
+              placeholder="Enter your email here"
               autocomplete="given-name"
               class="rounded block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
             />
@@ -42,13 +39,15 @@
               >Email is required</span
             >
             <br />
-
+            <label class="text-gray-500"
+              ><span class="text-red-500">*</span>Password</label
+            >
             <input
               type="password"
               id="password"
               name="password"
               v-model.trim="$v.password.$model"
-              placeholder="Password"
+              placeholder="Enter your password here"
               autocomplete="given-name"
               class="rounded block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
             />
@@ -97,10 +96,10 @@
         <div
           class="pt-4 rounded-lg overflow-hidden bg-white w-full shadow-2xl flex flex-col"
         >
-          <div class="text-2xl text-red-500 font-bold text-center px-4">Error</div>
-          <span class="tracking-widest px-4"
-            >{{ errorMsg }}</span
-          >
+          <div class="text-2xl text-red-500 font-bold text-center px-4">
+            Error
+          </div>
+          <span class="tracking-widest px-4">{{ errorMsg }}</span>
           <button
             @click="errorModal = false"
             class="bg-red-500 text-white py-2 mt-4 font-bold tracking-widest text-lg"
@@ -113,8 +112,7 @@
     <div
       v-if="errorModal"
       class="absolute inset-0 z-40 opacity-25 bg-black"
-    >
-    </div>
+    ></div>
   </div>
 </template>
 
@@ -131,7 +129,7 @@ export default {
       password: "",
       loading: false,
       errorModal: false,
-      errorMsg: '',
+      errorMsg: "",
     };
   },
   validations: {
@@ -165,8 +163,8 @@ export default {
         }
       } else {
         this.loading = false;
-       this.errorModal = true;
-       this.errorMsg = 'Enter the correct data into the form fields above.';
+        this.errorModal = true;
+        this.errorMsg = "Enter the correct data into the form fields above.";
       }
     },
   },

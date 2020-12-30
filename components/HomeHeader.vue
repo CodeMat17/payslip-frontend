@@ -8,7 +8,7 @@
       >
         <div>
           <div
-            class="flex items-center justify-center text-2xl font-bold"
+            class="flex items-center justify-center text-3xl font-bold"
           >
             <p class="text-transparent bg-gradient-to-r bg-clip-text from-yellow-500 to-red-500">Payslip <span class="text-sm text-yellow-200">vault</span></p>
           </div>

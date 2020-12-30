@@ -17,12 +17,15 @@
         </div>
         <form>
           <div class="">
+            <label class="text-gray-500"
+              ><span class="text-red-500">*</span>Name</label
+            >
             <input
               type="text"
               id="username"
               name="username"
               v-model.trim="$v.username.$model"
-              placeholder="Name"
+              placeholder="Enter your name"
               autocomplete="given-name"
               class="rounded block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
             />
@@ -38,12 +41,15 @@
             >
             <br />
 
+<label class="text-gray-500"
+              ><span class="text-red-500">*</span>Staff No.</label
+            >
             <input
               type="number"
               id="staffNo"
               name="staffNo"
               v-model.trim="$v.staffNo.$model"
-              placeholder="Staff No."
+              placeholder="Enter your staff No. here"
               autocomplete="given-name"
               class="rounded block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
             />
@@ -58,12 +64,16 @@
               >StaffNo is between 100 - 999</span
             >
             <br />
+
+            <label class="text-gray-500"
+              ><span class="text-red-500">*</span>Email</label
+            >
             <input
               type="email"
               id="email"
               name="email"
               v-model.trim="$v.email.$model"
-              placeholder="Email"
+              placeholder="Enter your email here"
               autocomplete="given-name"
               class="rounded block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
             />
@@ -77,12 +87,15 @@
             >
             <br />
 
+<label class="text-gray-500"
+              ><span class="text-red-500">*</span>Password</label
+            >
             <input
               type="password"
               id="password"
               name="password"
               v-model.trim="$v.password.$model"
-              placeholder="Password"
+              placeholder="Enter your password here"
               autocomplete="given-name"
               class="rounded block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
             />
@@ -104,12 +117,16 @@
               {{ $v.password.$params.maxLength.max }} characters</span
             >
             <br />
+
+            <label class="text-gray-500"
+              ><span class="text-red-500">*</span>Confirm password</label
+            >
             <input
               type="password"
               id="confirmPassword"
               name="confirmPassword"
               v-model.trim="$v.confirmPassword.$model"
-              placeholder="Confirm Password"
+              placeholder="Confirm your password here"
               autocomplete="given-name"
               class="rounded block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
             />
@@ -263,7 +280,6 @@ export default {
         this.loading = false;
         this.errorModal = true;
         this.errorMsg = "All fields are REQUIRED. See the red line(s)";
-     
       }
     },
   },
