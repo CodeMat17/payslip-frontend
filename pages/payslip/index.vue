@@ -260,7 +260,7 @@
       class="px-4 py-8 bg-red-200 font-semibold text-center text-lg text-red-700"
     >
       We noticed you have not subscribed for this service yet. Kindly contact
-      the admin for how to subscribe.
+      the admin on how to subscribe.
     </div>
   </div>
 </template>
