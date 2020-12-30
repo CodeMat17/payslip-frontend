@@ -55,7 +55,6 @@ export default {
         '@nuxtjs/axios',
         '@nuxtjs/dotenv',
         '@nuxtjs/auth',
-        'nuxt-tv-toast',
     ],
 
     // Axios module configuration (https://go.nuxtjs.dev/config-axios)

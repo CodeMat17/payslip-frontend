@@ -2,7 +2,7 @@
   <div class="w-full bg-gray-600">
     <div
       v-if="$nuxt.isOffline"
-      class="w-full bg-red-300 text-red-600 text-center px-4 py-8 text-lg font-bold tracking-widest uppercase"
+      class="w-full bg-red-300 text-red-600 text-center px-4 py-2 text-lg font-bold tracking-widest uppercase"
     >
       You are offline. Check your internet connection.
     </div>
@@ -21,7 +21,7 @@
               type="text"
               id="username"
               name="username"
-            v-model.trim="$v.username.$model"
+              v-model.trim="$v.username.$model"
               placeholder="Name"
               autocomplete="given-name"
               class="rounded block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
@@ -37,7 +37,7 @@
               >Name cannot be less than 3 characters</span
             >
             <br />
-           
+
             <input
               type="number"
               id="staffNo"
@@ -156,6 +156,31 @@
         </form>
       </div>
     </div>
+    <div
+      v-if="errorModal"
+      class="fixed overflow-x-hidden overflow-y-auto inset-0 flex justify-center items-center z-50"
+    >
+      <div class="relative w-auto mx-4 max-w-2xl">
+        <div
+          class="pt-4 rounded-lg overflow-hidden bg-white w-full shadow-2xl flex flex-col"
+        >
+          <div class="text-2xl text-red-500 font-bold text-center px-4">
+            Error
+          </div>
+          <span class="tracking-widest px-4">{{ errorMsg }}</span>
+          <button
+            @click="errorModal = false"
+            class="bg-red-500 text-white py-2 mt-4 font-bold tracking-widest text-lg"
+          >
+            OK
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      v-if="errorModal"
+      class="absolute inset-0 z-40 opacity-25 bg-black"
+    ></div>
   </div>
 </template>
 
@@ -183,6 +208,8 @@ export default {
       password: "",
       confirmPassword: "",
       loading: false,
+      errorModal: false,
+      errorMsg: "",
     };
   },
   validations: {
@@ -212,7 +239,6 @@ export default {
     async register() {
       this.loading = true;
       if (!this.$v.$anyError) {
-        this.$toast.show("Registering you ... Please wiat");
         try {
           this.$axios.setToken(false);
           await this.$axios.post("auth/local/register", {
@@ -221,12 +247,7 @@ export default {
             email: this.email,
             password: this.password,
           });
-          this.$toast.show({
-            type: "success",
-            title: "Success",
-            message: "Done!. You can login now.",
-          });
-          this.loading = false;          
+          this.loading = false;
           this.$router.push("/login");
           this.staffNo = null;
           this.username = "";
@@ -235,21 +256,14 @@ export default {
           this.confirmPassword = "";
         } catch (e) {
           this.loading = false;
-          this.$toast.show({
-            type: "error",
-            title: "Error",
-            message: e.response.data.message[0].messages[0].message,
-            timeout: 5,
-          });
+          this.errorModal = true;
+          this.errorMsg = e.response.data.message[0].messages[0].message;
         }
       } else {
         this.loading = false;
-        this.$toast.show({
-          type: "danger",
-          title: "Error",
-          message: "All fields are REQUIRED. See the red line(s)",
-          timeout: 5,
-        });
+        this.errorModal = true;
+        this.errorMsg = "All fields are REQUIRED. See the red line(s)";
+     
       }
     },
   },
