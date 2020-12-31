@@ -15,11 +15,11 @@
         class="w-full flex flex-col sm:flex-row items-center justify-center sm:justify-between"
       >
         <img
-          src="@/assets/svg/transaction.svg"
+          :src="require('@/assets/svg/transaction.svg')"
           class="w-full h-64 px-8 md:px-4 order-first sm:order-last"
         />
         <div class="w-full">
-          <div class="mt-8 sm:text-center">
+          <div class="mt-6 sm:text-center">
             <div
               class="text-transparent bg-gradient-to-r bg-clip-text from-yellow-500 to-red-500"
             >
@@ -34,7 +34,6 @@
             </div>
           </div>
           <div class="mt-16 w-full">
-
             <n-link to="/login">
               <p
                 class="text-center uppercase w-full py-4 bg-yellow-600 sm:max-w-sm sm:mx-auto rounded-lg text-2xl text-gray-300 hover:bg-yellow-500 hover:text-gray-700 font-bold tracking-widest"
@@ -50,6 +49,5 @@
 </template>
 
 <script>
-export default {
-};
+export default {};
 </script>

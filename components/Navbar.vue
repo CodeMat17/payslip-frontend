@@ -10,7 +10,7 @@
           <div
             class="flex items-center justify-center text-3xl font-bold"
           >
-            <p class="text-transparent bg-gradient-to-r bg-clip-text from-yellow-500 to-red-500">Payslip <span class="text-sm text-yellow-200">vault</span></p>
+            <p class="text-transparent bg-gradient-to-b bg-clip-text from-yellow-500 to-red-500">Payslip <span class="text-sm text-yellow-200">vault</span></p>
           </div>
         </div>
         <div  class="sm:hidden">
@@ -65,9 +65,6 @@
         </div>
       </div>
     </header>
-    <div v-if="bye" class="tracking-widest h-screen flex justify-center items-center bg-gray-700 text-gray-400 font-semibold text-xl">
-      Logging you out!!!
-    </div>
   </div>
 </template>
 
@@ -77,7 +74,6 @@ export default {
   data() {
     return {
       showMenu: false,
-      bye: false,
     }
   },
   computed: {
@@ -85,9 +81,7 @@ export default {
   },
   methods: {
     async logout() {
-      this.bye = true;
       await this.$auth.logout();
-      this.bye = false;
     }
   }
 };

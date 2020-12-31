@@ -22,7 +22,7 @@
         </p>
         <div v-if="loggedInUser.totalNetEarnings" class="mt-12">
           <p
-            class="text-center text-gray-500 uppercase tracking-widest font-bold text-xl md:text-2xl"
+            class="text-center text-transparent bg-gradient-to-t bg-clip-text from-red-500 to-yellow-500 uppercase tracking-widest font-bold text-xl md:text-2xl"
           >
             Employee Data
           </p>
@@ -56,7 +56,7 @@
       class="mt-4 px-4 md:w-5/6 lg:w-2/3 xl:w-1/2 mx-auto"
     >
       <p
-        class="text-center text-transparent bg-gradient-to-r bg-clip-text from-yellow-600 to-red-600 tracking-widest uppercase font-bold text-xl md:text-2xl"
+        class="text-center text-transparent bg-gradient-to-b bg-clip-text from-yellow-500 to-red-500 tracking-widest uppercase font-bold text-xl md:text-2xl"
       >
         Payslip
       </p>
@@ -234,7 +234,7 @@
       <div class="py-8 px-4 md:flex md:items-center md:justify-between">
         <div>
           <p
-            class="text-center text-3xl text-transparent bg-gradient-to-r bg-clip-text from-yellow-500 to-red-500 font-bold tracking-widest"
+            class="text-center text-3xl text-transparent bg-gradient-to-b bg-clip-text from-yellow-500 to-red-500 font-bold tracking-widest"
           >
             Payslip
           </p>

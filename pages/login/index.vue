@@ -73,8 +73,9 @@
               @click="login"
               class="uppercase text-gray-700 text-xl bg-yellow-500 mt-6 font-bold tracking-widest py-4 rounded block w-full focus:outline-none hover:bg-yellow-600 hover:text-gray-300"
             >
-              submit
+              login
             </button>
+            <span class="text-red-400 tracking-wide">Remember to LOGOUT when you are done.</span>
 
             <p class="text-gray-400 text-lg mt-4">
               Have no account?
