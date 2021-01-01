@@ -8,12 +8,12 @@
       >
         <div>
           <div
-            class="flex items-center justify-center text-3xl font-bold"
+            class="mt-3 flex items-center justify-center text-3xl font-bold"
           >
-            <p class="text-transparent bg-gradient-to-b bg-clip-text from-yellow-500 to-red-500">Payslip <span class="text-sm text-yellow-200">vault</span></p>
+            <p class="text-transparent bg-gradient-to-r bg-clip-text from-yellow-400 via-red-500 to-pink-500">Payslip <span class="text-sm text-yellow-200">vault</span></p>
           </div>
         </div>
-        <div  class="sm:hidden">
+        <div  class="sm:hidden mt-4">
           <button
             @click="showMenu = !showMenu"
             type="button"
@@ -47,7 +47,7 @@
       <div
       
         :class="showMenu ? 'block' : 'hidden'"
-        class="pb-2 uppercase font-semibold tracking-wider text-gray-400 sm:flex"
+        class="pb-2 uppercase font-semibold tracking-wider text-gray-400 sm:flex sm:items-center"
         @click="showMenu = !showMenu"
       >
         <n-link
@@ -57,10 +57,10 @@
         >
         <n-link
           to="#download"
-          class="block px-4 py-4 mb-6 hover:bg-gray-500 hover:text-gray-700 rounded sm:mt-0 sm:ml-3 sm:tracking-widest"
+          class="block px-4 py-4 hover:bg-gray-500 hover:text-gray-700 rounded sm:mt-0 sm:ml-3 sm:tracking-widest"
           >Downloads</n-link
         >
-        <div class="mx-4 pb-4 mt-2">
+        <div class="mx-4 pb-4 mt-2 pt-2">
         <button type="button" @click="logout" class="w-full block bg-yellow-600 rounded px-4 py-3 hover:bg-yellow-500 text-gray-200 hover:text-gray-700 rounded sm:mt-0 sm:ml-3 tracking-widest font-bold uppercase">Logout</button>
         </div>
       </div>

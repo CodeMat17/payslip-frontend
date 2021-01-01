@@ -21,7 +21,7 @@
         <div class="w-full">
           <div class="mt-6 sm:text-center">
             <div
-              class="text-transparent bg-gradient-to-r bg-clip-text from-yellow-500 to-red-500"
+              class="text-transparent bg-gradient-to-r bg-clip-text from-yellow-400 via-red-500 to-pink-500"
             >
               <p class="font-bold text-6xl tracking-widest">Payslip</p>
               <div class="animate-pulse">

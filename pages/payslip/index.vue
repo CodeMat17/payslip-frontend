@@ -22,7 +22,7 @@
         </p>
         <div v-if="loggedInUser.totalNetEarnings" class="mt-12">
           <p
-            class="text-center text-transparent bg-gradient-to-t bg-clip-text from-red-500 to-yellow-500 uppercase tracking-widest font-bold text-xl md:text-2xl"
+            class="text-center text-transparent bg-gradient-to-r bg-clip-text from-yellow-400 via-red-500 to-pink-500 uppercase tracking-widest font-bold text-xl md:text-2xl"
           >
             Employee Data
           </p>
@@ -156,7 +156,9 @@
         <div
           class="w-32 my-8 mx-auto border border-gray-700 rounded-xl overflow-hidden shadow-xl"
         >
-          <a href="#">
+        <!-- https://res.cloudinary.com/mctony17/image/upload/v1609448777/p-slip.webp -->
+
+         <a href="https://res.cloudinary.com/mctony17/image/upload/v1609448777/p-slip.webp" download target="_blank">
             <div class="bg-gray-700 py-2">
               <svg
                 class="w-16 h-16 fill-current text-gray-300 mx-auto animate-pulse"
@@ -168,8 +170,8 @@
                 />
               </svg>
             </div>
-          </a>
-          <a href="#">
+       
+         
             <div
               class="text-xl text-center py-2 text-gray-700 bg-gray-300 font-semibold tracking-widest"
             >
@@ -234,7 +236,7 @@
       <div class="py-8 px-4 md:flex md:items-center md:justify-between">
         <div>
           <p
-            class="text-center text-3xl text-transparent bg-gradient-to-b bg-clip-text from-yellow-500 to-red-500 font-bold tracking-widest"
+            class="text-center text-3xl text-transparent bg-gradient-to-r bg-clip-text from-yellow-400 via-red-500 to-pink-500 font-bold tracking-widest"
           >
             Payslip
           </p>
@@ -270,7 +272,6 @@ import Navbar from "@/components/Navbar";
 import { mapGetters } from "vuex";
 export default {
   middleware: "auth",
-  methods: {},
   components: {
     Navbar,
   },
