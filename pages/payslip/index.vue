@@ -56,7 +56,7 @@
       class="mt-4 px-4 md:w-5/6 lg:w-2/3 xl:w-1/2 mx-auto"
     >
       <p
-        class="text-center text-transparent bg-gradient-to-b bg-clip-text from-yellow-500 to-red-500 tracking-widest uppercase font-bold text-xl md:text-2xl"
+        class="text-center text-transparent bg-gradient-to-r bg-clip-text from-yellow-400 via-red-500 to-pink-500 tracking-widest uppercase font-bold text-xl md:text-2xl"
       >
         Payslip
       </p>
@@ -171,7 +171,7 @@
             <div
               class="text-xl text-center py-2 text-gray-700 bg-gray-300 font-semibold tracking-widest"
             >
-              Jan 2021
+              Current
             </div>
           </n-link>
         </div>
@@ -191,20 +191,19 @@
                 />
               </svg>
             </div>
-        
-        
+
             <div
               class="text-xl text-center py-2 text-gray-700 bg-gray-300 font-semibold tracking-widest"
             >
-              Dec 2020
+              Previous
             </div>
-         </n-link>
+          </n-link>
         </div>
 
         <div
           class="w-32 my-8 mx-auto border border-gray-700 rounded-xl overflow-hidden shadow-xl"
         >
-           <n-link to="/prePrevious-payslip">
+          <n-link to="/prePrevious-payslip">
             <div class="bg-gray-700 py-2">
               <svg
                 class="w-16 h-16 fill-current text-gray-300 mx-auto"
@@ -217,11 +216,16 @@
               </svg>
             </div>
             <div
-              class="text-xl text-center py-2 text-gray-700 bg-gray-300 font-semibold tracking-widest"
+              class="flex justify-center items-center text-xl text-center py-2 text-gray-700 bg-gray-300 font-semibold tracking-widest"
             >
-              Nov 2020
+              <svg style="width: 30px; height: 30px" viewBox="0 0 24 24">
+                <path
+                  fill="currentColor"
+                  d="M14.58,16.59L19.17,12L14.58,7.41L16,6L22,12L16,18L14.58,16.59M8.58,16.59L13.17,12L8.58,7.41L10,6L16,12L10,18L8.58,16.59M2.58,16.59L7.17,12L2.58,7.41L4,6L10,12L4,18L2.58,16.59Z"
+                />
+              </svg>
             </div>
-       </n-link>
+          </n-link>
         </div>
         <br />
       </div>
