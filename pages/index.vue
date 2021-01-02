@@ -12,11 +12,11 @@
 
     <div class="w-full h-screen bg-gray-700 px-4 py-6 flex">
       <div
-        class="w-full flex flex-col sm:flex-row items-center justify-center sm:justify-between"
+        class="w-full flex flex-col sm:flex-row items-center sm:items-center justify-center sm:justify-between"
       >
         <img
           :src="require('@/assets/svg/transaction.svg')"
-          class="w-full h-64 px-8 md:px-4 order-first sm:order-last"
+          class="w-full px-8 md:px-4 order-first sm:order-last"
         />
         <div class="w-full">
           <div class="mt-6 sm:text-center">
@@ -33,7 +33,7 @@
               </div>
             </div>
           </div>
-          <div class="mt-16 w-full">
+          <div class="mt-12 w-full">
             <n-link to="/login">
               <p
                 class="text-center uppercase w-full py-4 bg-yellow-600 sm:max-w-sm sm:mx-auto rounded-lg text-2xl text-gray-300 hover:bg-yellow-500 hover:text-gray-700 font-bold tracking-widest"
