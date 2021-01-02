@@ -156,9 +156,7 @@
         <div
           class="w-32 my-8 mx-auto border border-gray-700 rounded-xl overflow-hidden shadow-xl"
         >
-        <!-- https://res.cloudinary.com/mctony17/image/upload/v1609448777/p-slip.webp -->
-
-         <a href="https://res.cloudinary.com/mctony17/image/upload/v1609448777/p-slip.webp" download target="_blank">
+          <n-link to="/current-payslip">
             <div class="bg-gray-700 py-2">
               <svg
                 class="w-16 h-16 fill-current text-gray-300 mx-auto animate-pulse"
@@ -170,20 +168,18 @@
                 />
               </svg>
             </div>
-       
-         
             <div
               class="text-xl text-center py-2 text-gray-700 bg-gray-300 font-semibold tracking-widest"
             >
               Jan 2021
             </div>
-          </a>
+          </n-link>
         </div>
 
         <div
           class="my-8 w-32 mx-auto border border-gray-700 rounded-xl overflow-hidden shadow-xl"
         >
-          <a href="#">
+          <n-link to="/previous-payslip">
             <div class="bg-gray-700 py-2">
               <svg
                 class="w-16 h-16 fill-current text-gray-300 mx-auto"
@@ -195,20 +191,20 @@
                 />
               </svg>
             </div>
-          </a>
-          <a href="#">
+        
+        
             <div
               class="text-xl text-center py-2 text-gray-700 bg-gray-300 font-semibold tracking-widest"
             >
               Dec 2020
             </div>
-          </a>
+         </n-link>
         </div>
 
         <div
           class="w-32 my-8 mx-auto border border-gray-700 rounded-xl overflow-hidden shadow-xl"
         >
-          <a href="#">
+           <n-link to="/prePrevious-payslip">
             <div class="bg-gray-700 py-2">
               <svg
                 class="w-16 h-16 fill-current text-gray-300 mx-auto"
@@ -220,14 +216,12 @@
                 />
               </svg>
             </div>
-          </a>
-          <a href="#">
             <div
               class="text-xl text-center py-2 text-gray-700 bg-gray-300 font-semibold tracking-widest"
             >
               Nov 2020
             </div>
-          </a>
+       </n-link>
         </div>
         <br />
       </div>
