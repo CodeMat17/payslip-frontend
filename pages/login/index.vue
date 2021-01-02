@@ -75,7 +75,7 @@
             >
               login
             </button>
-            <span class="text-red-400 tracking-wide">Remember to LOGOUT when you are done.</span>
+            <span class="text-red-400 tracking-wide text-xs">Remember to LOGOUT when you are done.</span>
 
             <p class="text-gray-400 text-lg mt-4">
               Have no account?
