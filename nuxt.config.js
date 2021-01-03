@@ -55,7 +55,18 @@ export default {
         '@nuxtjs/axios',
         '@nuxtjs/dotenv',
         '@nuxtjs/auth',
+        '@nuxtjs/toast',
     ],
+
+    toast: {
+        position: 'top-center',
+        action: {
+            text: 'Cancel',
+            onClick: (e, toastObject) => {
+                toastObject.goAway(0);
+            }
+        }
+    },
 
     // Axios module configuration (https://go.nuxtjs.dev/config-axios)
     axios: {

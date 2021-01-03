@@ -15,7 +15,7 @@
         >
           Register
         </div>
-        <form>
+        <form @submit.prevent="register">
           <div class="">
             <label class="text-gray-500"
               ><span class="text-red-500">*</span>Name</label
@@ -27,6 +27,7 @@
               v-model.trim="$v.username.$model"
               placeholder="Enter your name"
               autocomplete="given-name"
+               aria-describedby="username"
               class="rounded block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
             />
             <span
@@ -41,7 +42,7 @@
             >
             <br />
 
-<label class="text-gray-500"
+            <label class="text-gray-500"
               ><span class="text-red-500">*</span>Staff No.</label
             >
             <input
@@ -51,6 +52,7 @@
               v-model.trim="$v.staffNo.$model"
               placeholder="Enter your staff No. here"
               autocomplete="given-name"
+               aria-describedby="staffNo"
               class="rounded block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
             />
             <span
@@ -75,6 +77,7 @@
               v-model.trim="$v.email.$model"
               placeholder="Enter your email here"
               autocomplete="given-name"
+               aria-describedby="email"
               class="rounded block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
             />
             <span
@@ -87,7 +90,7 @@
             >
             <br />
 
-<label class="text-gray-500"
+            <label class="text-gray-500"
               ><span class="text-red-500">*</span>Password</label
             >
             <input
@@ -97,6 +100,7 @@
               v-model.trim="$v.password.$model"
               placeholder="Enter your password here"
               autocomplete="given-name"
+               aria-describedby="password"
               class="rounded block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
             />
             <span
@@ -128,6 +132,7 @@
               v-model.trim="$v.confirmPassword.$model"
               placeholder="Confirm your password here"
               autocomplete="given-name"
+               aria-describedby="confirmPassword"
               class="rounded block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
             />
             <span
@@ -143,22 +148,10 @@
             <br />
 
             <button
-              v-if="loading"
-              type="button"
-              class="uppercase text-gray-700 text-xl bg-yellow-500 mt-6 font-bold tracking-widest py-4 rounded block w-full focus:outline-none hover:bg-yellow-600 hover:text-gray-300"
-            >
-              <img
-                src="@/assets/svg/loading.svg"
-                class="mx-auto animate-spin"
-              />
-            </button>
-            <button
-              v-else
-              type="button"
-              @click="register"
+              type="submit"
               class="uppercase text-gray-700 text-xl bg-yellow-500 mt-2 font-bold tracking-widest py-4 rounded block w-full focus:outline-none hover:bg-yellow-600 hover:text-gray-300"
             >
-              Register
+              {{ loading ? "registering... please wait" : "register" }}
             </button>
 
             <p class="text-gray-400 text-lg mt-4">

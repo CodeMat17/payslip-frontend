@@ -19,7 +19,7 @@
           </h3>
         </div>
 
-        <form>
+        <form @submit.prevent="login">
           <div class="">
             <label class="text-gray-500"
               ><span class="text-red-500">*</span>Email</label
@@ -31,6 +31,7 @@
               v-model.trim="$v.email.$model"
               placeholder="Enter your email here"
               autocomplete="given-name"
+               aria-describedby="email"
               class="rounded block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
             />
             <span
@@ -49,6 +50,7 @@
               v-model.trim="$v.password.$model"
               placeholder="Enter your password here"
               autocomplete="given-name"
+               aria-describedby="password"
               class="rounded block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
             />
             <span
@@ -58,24 +60,14 @@
             >
             <br />
             <button
-              v-if="loading"
-              type="button"
-              class="uppercase text-gray-700 text-xl bg-yellow-500 mt-6 font-bold tracking-widest py-4 rounded block w-full focus:outline-none hover:bg-yellow-600 hover:text-gray-300"
+              type="submit"
+              class="uppercase text-gray-700 text-lg bg-yellow-500 mt-6 font-bold tracking-widest py-4 px-2 rounded block w-full focus:outline-none hover:bg-yellow-600 hover:text-gray-300"
             >
-              <img
-                src="@/assets/svg/loading.svg"
-                class="mx-auto animate-spin"
-              />
+              {{ loading ? "Submitting... please wait" : "login" }}
             </button>
-            <button
-              type="button"
-              v-else
-              @click="login"
-              class="uppercase text-gray-700 text-xl bg-yellow-500 mt-6 font-bold tracking-widest py-4 rounded block w-full focus:outline-none hover:bg-yellow-600 hover:text-gray-300"
+            <span class="text-red-400 tracking-wide text-xs"
+              >Remember to LOGOUT when you are done.</span
             >
-              login
-            </button>
-            <span class="text-red-400 tracking-wide text-xs">Remember to LOGOUT when you are done.</span>
 
             <p class="text-gray-400 text-lg mt-4">
               Have no account?
