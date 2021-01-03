@@ -8,22 +8,21 @@
       accordingly.
     </div> -->
     <form @submit.prevent="sendMsg" class="grid grid-cols-1 gap-y-6 py-8">
-     
       <div class="px-4">
-        <label for="full_name" class="sr-only">Full name*</label>
+        <label for="name">Full name</label>
         <div class="relative rounded-lg shadow-sm">
           <input
             v-model="form.name"
             required
             name="name"
-            id="full_name"
+            id="name"
             class="block w-full py-3 px-4 transition ease-in-out duration-150"
-            placeholder="Full name"
+            placeholder="Name"
           />
         </div>
       </div>
       <div class="px-4">
-        <label for="email" class="sr-only">Email*</label>
+        <label for="email" class="sr-only">Email</label>
         <div class="relative rounded-md shadow-sm">
           <input
             v-model="form.email"
@@ -72,7 +71,7 @@
             id="message"
             rows="4"
             class="form-input block w-full py-3 px-4 placeholder-gray-500 transition ease-in-out duration-150"
-            placeholder="Message*"
+            placeholder="Message"
           ></textarea>
         </div>
       </div>
@@ -96,8 +95,6 @@ export default {
   data() {
     return {
       loading: false,
-      toastNote: false,
-     
       form: {
         name: "",
         email: "",
@@ -111,8 +108,10 @@ export default {
     async sendMsg() {
       this.loading = true;
       try {
+        let uri = "https://payslipvault.netlify.app/";
         const response = await this.$axios.$post(
-          "/.netlify/functions/contact-mail",
+          uri,
+          "/netlify/functions/contact-mail",
           {
             name: this.form.name,
             email: this.form.email,
@@ -120,6 +119,9 @@ export default {
             message: this.form.message,
           }
         );
+        console.log(form.name);
+        console.log(form.email);
+        console.log(form.message);
         this.loading = false;
         this.$toast.success(response);
         this.form.name = "";

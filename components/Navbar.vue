@@ -7,13 +7,15 @@
         class="flex items-center justify-between text-gray-200 px-4 py-3 sm:p-0"
       >
         <div>
-          <div
-            class="mt-3 flex items-center justify-center text-3xl font-bold"
-          >
-            <p class="text-transparent bg-gradient-to-r bg-clip-text from-yellow-400 via-red-500 to-pink-500">Payslip <span class="text-sm text-yellow-200">vault</span></p>
+          <div class="mt-3 flex items-center justify-center text-3xl font-bold">
+            <p
+              class="text-transparent bg-gradient-to-r bg-clip-text from-yellow-400 via-red-500 to-pink-500"
+            >
+              Payslip <span class="text-sm text-yellow-200">vault</span>
+            </p>
           </div>
         </div>
-        <div  class="sm:hidden mt-4">
+        <div class="sm:hidden mt-4">
           <button
             @click="showMenu = !showMenu"
             type="button"
@@ -45,7 +47,6 @@
         </div>
       </div>
       <div
-      
         :class="showMenu ? 'block' : 'hidden'"
         class="pb-2 uppercase font-semibold tracking-wider text-gray-400 sm:flex sm:items-center"
         @click="showMenu = !showMenu"
@@ -61,7 +62,13 @@
           >Downloads</n-link
         >
         <div class="mx-4 pb-4 mt-2 pt-2">
-        <button type="button" @click="logout" class="w-full block bg-yellow-600 rounded px-4 py-3 hover:bg-yellow-500 text-gray-200 hover:text-gray-700 rounded sm:mt-0 sm:ml-3 tracking-widest font-bold uppercase">Logout</button>
+          <button
+            type="button"
+            @click="logout"
+            class="w-full block bg-yellow-600 rounded px-4 py-3 hover:bg-yellow-500 text-gray-200 hover:text-gray-700 rounded sm:mt-0 sm:ml-3 tracking-widest font-bold uppercase"
+          >
+            Logout
+          </button>
         </div>
       </div>
     </header>
@@ -69,20 +76,21 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters } from "vuex";
 export default {
   data() {
     return {
       showMenu: false,
-    }
+    };
   },
   computed: {
-    ...mapGetters(['isAuthenticated',]),
+    ...mapGetters(["isAuthenticated"]),
   },
   methods: {
     async logout() {
       await this.$auth.logout();
-    }
-  }
+      this.$toast.show("You are logged out.");
+    },
+  },
 };
 </script>

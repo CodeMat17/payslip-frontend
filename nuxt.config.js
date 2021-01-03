@@ -59,9 +59,10 @@ export default {
     ],
 
     toast: {
-        position: 'top-center',
+        duration: 6000,
+        position: 'bottom-center',
         action: {
-            text: 'Cancel',
+            text: 'Okay',
             onClick: (e, toastObject) => {
                 toastObject.goAway(0);
             }

@@ -63,7 +63,7 @@
               type="submit"
               class="uppercase text-gray-700 text-lg bg-yellow-500 mt-6 font-bold tracking-widest py-4 px-2 rounded block w-full focus:outline-none hover:bg-yellow-600 hover:text-gray-300"
             >
-              {{ loading ? "Submitting... please wait" : "login" }}
+              {{ loading ? "Please wait..." : "login" }}
             </button>
             <span class="text-red-400 tracking-wide text-xs"
               >Remember to LOGOUT when you are done.</span
@@ -81,31 +81,6 @@
         </form>
       </div>
     </div>
-    <div
-      v-if="errorModal"
-      class="fixed overflow-x-hidden overflow-y-auto inset-0 flex justify-center items-center z-50"
-    >
-      <div class="relative w-auto mx-4 max-w-2xl">
-        <div
-          class="pt-4 rounded-lg overflow-hidden bg-white w-full shadow-2xl flex flex-col"
-        >
-          <div class="text-2xl text-red-500 font-bold text-center px-4">
-            Error
-          </div>
-          <span class="tracking-widest px-4">{{ errorMsg }}</span>
-          <button
-            @click="errorModal = false"
-            class="bg-red-500 text-white py-2 mt-4 font-bold tracking-widest text-lg"
-          >
-            OK
-          </button>
-        </div>
-      </div>
-    </div>
-    <div
-      v-if="errorModal"
-      class="absolute inset-0 z-40 opacity-25 bg-black"
-    ></div>
   </div>
 </template>
 
@@ -121,8 +96,6 @@ export default {
       email: "",
       password: "",
       loading: false,
-      errorModal: false,
-      errorMsg: "",
     };
   },
   validations: {
@@ -144,6 +117,7 @@ export default {
               password: this.password,
             },
           });
+          this.$toast.success('Login successful');
           this.loading = false;
           this.$router.push("/payslip");
           this.email = "";
@@ -151,13 +125,11 @@ export default {
         } catch (e) {
           this.loading = false;
           // put modal here
-          this.errorModal = true;
-          this.errorMsg = e.response.data.message[0].messages[0].message;
+          this.$toast.error(e.response.data.message[0].messages[0].message);
         }
       } else {
         this.loading = false;
-        this.errorModal = true;
-        this.errorMsg = "Enter the correct data into the form fields above.";
+        this.$toast.error("Enter the correct data into the form fields above.");
       }
     },
   },

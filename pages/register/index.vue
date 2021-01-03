@@ -27,7 +27,7 @@
               v-model.trim="$v.username.$model"
               placeholder="Enter your name"
               autocomplete="given-name"
-               aria-describedby="username"
+              aria-describedby="username"
               class="rounded block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
             />
             <span
@@ -52,7 +52,7 @@
               v-model.trim="$v.staffNo.$model"
               placeholder="Enter your staff No. here"
               autocomplete="given-name"
-               aria-describedby="staffNo"
+              aria-describedby="staffNo"
               class="rounded block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
             />
             <span
@@ -77,7 +77,7 @@
               v-model.trim="$v.email.$model"
               placeholder="Enter your email here"
               autocomplete="given-name"
-               aria-describedby="email"
+              aria-describedby="email"
               class="rounded block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
             />
             <span
@@ -100,7 +100,7 @@
               v-model.trim="$v.password.$model"
               placeholder="Enter your password here"
               autocomplete="given-name"
-               aria-describedby="password"
+              aria-describedby="password"
               class="rounded block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
             />
             <span
@@ -132,7 +132,7 @@
               v-model.trim="$v.confirmPassword.$model"
               placeholder="Confirm your password here"
               autocomplete="given-name"
-               aria-describedby="confirmPassword"
+              aria-describedby="confirmPassword"
               class="rounded block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
             />
             <span
@@ -151,7 +151,7 @@
               type="submit"
               class="uppercase text-gray-700 text-xl bg-yellow-500 mt-2 font-bold tracking-widest py-4 rounded block w-full focus:outline-none hover:bg-yellow-600 hover:text-gray-300"
             >
-              {{ loading ? "registering... please wait" : "register" }}
+              {{ loading ? "Please wait..." : "register" }}
             </button>
 
             <p class="text-gray-400 text-lg mt-4">
@@ -165,32 +165,7 @@
           </div>
         </form>
       </div>
-    </div>
-    <div
-      v-if="errorModal"
-      class="fixed overflow-x-hidden overflow-y-auto inset-0 flex justify-center items-center z-50"
-    >
-      <div class="relative w-auto mx-4 max-w-2xl">
-        <div
-          class="pt-4 rounded-lg overflow-hidden bg-white w-full shadow-2xl flex flex-col"
-        >
-          <div class="text-2xl text-red-500 font-bold text-center px-4">
-            Error
-          </div>
-          <span class="tracking-widest px-4">{{ errorMsg }}</span>
-          <button
-            @click="errorModal = false"
-            class="bg-red-500 text-white py-2 mt-4 font-bold tracking-widest text-lg"
-          >
-            OK
-          </button>
-        </div>
-      </div>
-    </div>
-    <div
-      v-if="errorModal"
-      class="absolute inset-0 z-40 opacity-25 bg-black"
-    ></div>
+    </div>    
   </div>
 </template>
 
@@ -218,8 +193,6 @@ export default {
       password: "",
       confirmPassword: "",
       loading: false,
-      errorModal: false,
-      errorMsg: "",
     };
   },
   validations: {
@@ -257,6 +230,7 @@ export default {
             email: this.email,
             password: this.password,
           });
+          this.$toast.success("Registration successful. You can login now.");
           this.loading = false;
           this.$router.push("/login");
           this.staffNo = null;
@@ -266,13 +240,11 @@ export default {
           this.confirmPassword = "";
         } catch (e) {
           this.loading = false;
-          this.errorModal = true;
-          this.errorMsg = e.response.data.message[0].messages[0].message;
+          this.$toast.error(e.response.data.message[0].messages[0].message);
         }
       } else {
         this.loading = false;
-        this.errorModal = true;
-        this.errorMsg = "All fields are REQUIRED. See the red line(s)";
+        this.$toast.error("All fields are REQUIRED. See the red line(s)");
       }
     },
   },
