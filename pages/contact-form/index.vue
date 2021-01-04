@@ -8,7 +8,7 @@
       accordingly.
     </div> -->
     <div class="mt-8">
-      <p class="px-4">Contact Form</p>
+      <p class="px-4 py-4 bg-gray-200 text-xl text-gray-700">Contact Form</p>
       <div>
         <form
         method="POST"
