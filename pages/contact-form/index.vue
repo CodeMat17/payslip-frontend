@@ -108,10 +108,10 @@ export default {
     async sendMsg() {
       this.loading = true;
       try {
-        let uri = "https://payslipvault.netlify.app/";
+        let uri = "https://payslipvault.netlify.app";
         const response = await this.$axios.$post(
           uri,
-          "/netlify/functions/contact-mail",
+          "/.netlify/functions/contact-mail",
           {
             name: this.form.name,
             email: this.form.email,
