@@ -10,7 +10,13 @@
     <div class="mt-8">
       <p class="px-4">Contact Form</p>
       <div>
-        <form @submit.prevent="sendMsg" class="px-4 py-6 space-y-4">
+        <form
+        method="POST"
+          @submit.prevent="sendMsg"
+          class="px-4 py-6 space-y-4"
+          netlify
+          netlify-data="true"
+        >
           <div class="">
             <label for="name">Name</label>
             <input
@@ -47,6 +53,7 @@
               class="block border-2 w-full rounded-md p-2 text-gray-700 bg-gray-100 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
             />
           </div>
+          <div data-netlify-recaptcha="true"></div>
           <br />
           <button
             type="sumbit"
@@ -74,23 +81,24 @@ export default {
     };
   },
   methods: {
-     async sendMsg() {
+    async sendMsg() {
       this.loading = true;
-     try {
-       const response = await this.$axios.$post('/.netlify/functions/contact-mail', {
-         name: this.name,
-         email: this.email,
-         message: this.message,
-       })
-       this.$toast.success('Mail Sent');
-       this.loading = false;
-       this.name = ''
-       this.email = ''
-       this.message = ''
-     } catch(error) {
-       this.loading = false;
-       this.$toast.error(error);
-     }     
+      try {
+        // const response = await this.$axios.$post('/.netlify/functions/contact-mail', {
+        const response = await this.$axios.post("/messages", {
+          name: this.name,
+          email: this.email,
+          message: this.message,
+        });
+        this.$toast.success("Mail Sent");
+        this.loading = false;
+        this.name = "";
+        this.email = "";
+        this.message = "";
+      } catch (error) {
+        this.loading = false;
+        this.$toast.error(error);
+      }
     },
   },
 };
