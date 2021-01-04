@@ -16,7 +16,8 @@
     "core-js": "^3.6.5",
     "dotenv": "^8.2.0",
     "global": "^4.4.0",
-    "netlify-cli": "^2.69.11",
+    "mailgun-js": "^0.22.0",
+    "netlify-cli": "^2.70.0",
     "nuxt": "^2.14.12",
     "vuelidate": "^0.7.6"
   },
