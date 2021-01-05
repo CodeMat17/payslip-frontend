@@ -1,28 +1,37 @@
 <template>
   <div>
-    <!-- <div
-      
-      class="mt-8 bg-green-500 py-8 px-4 text-center text-xl font-semibold text-gray-200 tracking-widest"
+    <div
+      v-if="$nuxt.isOffline"
+      class="w-full bg-red-300 text-red-600 text-center px-4 py-2 text-lg font-bold tracking-widest uppercase"
     >
-      Your message has been sent successfully and will be attended to
-      accordingly.
-    </div> -->
-    <div class="mt-8">
+      You are offline. Check your internet connection.
+    </div>
+    <div
+      v-if="mailSent"
+      class="mt-16 ml-4 mr-4 max-w-lg mx-auto text-center tracking-widest bg-green-300 py-6 rounded-lg"
+    >
+      <p class="text-2xl text-green-700">Mail submitted!</p>
+      <button
+        @click="$router.back()"
+        class="mt-6 uppercase bg-green-700 text-green-300 font-semibold px-4 py-2 rounded-lg hover:bg-green-200 hover:text-green-700 hover:font-bold focus:outline-none focus:bg-green-100"
+      >
+        go back
+      </button>
+    </div>
+    <div v-else class="mt-8 max-w-2xl mx-auto">
       <p
-        class="px-4 py-4 bg-gray-200 text-xl text-gray-700 font-bold tracking-widest"
+        class="mx-4 px-4 py-4 bg-gray-200 text-xl text-gray-700 font-bold tracking-widest rounded-t-lg"
       >
         Contact Form
       </p>
       <div>
-        <form
-          @submit.prevent="sendMsg"
-          class="px-4 py-6 space-y-4"
-          netlify
-          netlify-data="true"
-        >
+        <form @submit.prevent="sendMsg" class="px-4 py-6 space-y-4">
           <div class="">
-            <label for="name">Name</label>
+            <label for="name"
+              >Name<span class="text-red-500 font-bold">*</span></label
+            >
             <input
+              required
               type="text"
               name="name"
               id="name"
@@ -33,8 +42,41 @@
             />
           </div>
           <div>
-            <label for="email">Email</label>
+            <label for="staffNo"
+              >Staff No.<span class="text-red-500 font-bold">*</span></label
+            >
             <input
+              required
+              type="number"
+              name="staffNo"
+              id="staffNo"
+              v-model="staffNo"
+              placeholder="Enter your staffNo."
+              aria-describedby="staffNo"
+              class="block border-2 rounded-md w-full p-2 text-gray-700 bg-gray-100 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
+            />
+          </div>
+          <div>
+            <label for="phoneNo"
+              >Phone No.<span class="text-red-500 font-bold">*</span></label
+            >
+            <input
+              required
+              type="number"
+              name="phoneNo"
+              id="phoneNo"
+              v-model="phoneNo"
+              placeholder="Enter your phone No."
+              aria-describedby="phoneNo"
+              class="block border-2 rounded-md w-full p-2 text-gray-700 bg-gray-100 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
+            />
+          </div>
+          <div>
+            <label for="email"
+              >Email<span class="text-red-500 font-bold">*</span></label
+            >
+            <input
+              required
               type="email"
               name="email"
               id="email"
@@ -45,8 +87,11 @@
             />
           </div>
           <div>
-            <label for="message">Message</label>
+            <label for="message"
+              >Message<span class="text-red-500 font-bold">*</span></label
+            >
             <textarea
+              required
               name="message"
               id="message"
               v-model="message"
@@ -56,8 +101,6 @@
               class="block border-2 w-full rounded-md p-2 text-gray-700 bg-gray-100 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
             />
           </div>
-          <div data-netlify-recaptcha="true" class="px-4 py-6"></div>
-          <br />
           <button
             type="sumbit"
             class="block w-full rounded-md text-gray-300 font-bold text-xl p-3 text-center bg-gray-700 tracking-widest uppercase"
@@ -76,30 +119,35 @@ export default {
   data() {
     return {
       loading: false,
+      mailSent: false,
       name: "",
       email: "",
-      //   staffNo: "",
-      // phone: "",
+      staffNo: "",
+      phoneNo: "",
       message: "",
     };
   },
   methods: {
     sendMsg() {
       this.loading = true;
-
       // const response = await this.$axios.$post('/.netlify/functions/contact-mail', {
       this.$axios
         .post("/messages", {
           name: this.name,
           email: this.email,
+          staffNo: this.staffNo,
+          phoneNo: this.phoneNo,
           message: this.message,
         })
         .then((response) => {
           this.loading = false;
-          this.name = '';
-          this.email = '';
-          this.message = '';
+          this.name = "";
+          this.email = "";
+          this.staffNo = "";
+          this.phoneNo = "";
+          this.message = "";
           this.$toast.success("Mail Sent");
+          this.mailSent = true;
         })
         .catch((error) => {
           this.loading = false;
