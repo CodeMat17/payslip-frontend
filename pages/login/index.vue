@@ -31,7 +31,7 @@
               v-model.trim="$v.email.$model"
               placeholder="Enter your email here"
               autocomplete="given-name"
-               aria-describedby="email"
+              aria-describedby="email"
               class="rounded block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
             />
             <span
@@ -50,7 +50,7 @@
               v-model.trim="$v.password.$model"
               placeholder="Enter your password here"
               autocomplete="given-name"
-               aria-describedby="password"
+              aria-describedby="password"
               class="rounded block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
             />
             <span
@@ -65,11 +65,17 @@
             >
               {{ loading ? "Please wait..." : "login" }}
             </button>
-            <span class="text-red-400 tracking-wide text-xs"
-              >Remember to LOGOUT when you are done.</span
-            >
 
-            <p class="text-gray-400 text-lg mt-4">
+            <p class="text-gray-400 text-md mt-4">
+              Forgot password?
+              <n-link to="/forgot-password"
+                ><span class="text-yellow-500 font-semibold"
+                  >Click here.</span
+                ></n-link
+              >
+            </p>
+
+            <p class="text-gray-400 text-md mt-2">
               Have no account?
               <n-link to="/register"
                 ><span class="text-yellow-500 font-semibold"
@@ -117,7 +123,7 @@ export default {
               password: this.password,
             },
           });
-          this.$toast.success('Login successful');
+          this.$toast.success("Login successful");
           this.loading = false;
           this.$router.push("/payslip");
           this.email = "";

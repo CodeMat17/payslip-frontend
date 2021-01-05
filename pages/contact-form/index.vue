@@ -8,10 +8,13 @@
       accordingly.
     </div> -->
     <div class="mt-8">
-      <p class="px-4 py-4 bg-gray-200 text-xl text-gray-700">Contact Form</p>
+      <p
+        class="px-4 py-4 bg-gray-200 text-xl text-gray-700 font-bold tracking-widest"
+      >
+        Contact Form
+      </p>
       <div>
         <form
-        method="POST"
           @submit.prevent="sendMsg"
           class="px-4 py-6 space-y-4"
           netlify
@@ -53,7 +56,7 @@
               class="block border-2 w-full rounded-md p-2 text-gray-700 bg-gray-100 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
             />
           </div>
-          <div data-netlify-recaptcha="true"></div>
+          <div data-netlify-recaptcha="true" class="px-4 py-6"></div>
           <br />
           <button
             type="sumbit"
@@ -81,24 +84,30 @@ export default {
     };
   },
   methods: {
-    async sendMsg() {
+    sendMsg() {
       this.loading = true;
-      try {
-        // const response = await this.$axios.$post('/.netlify/functions/contact-mail', {
-        const response = await this.$axios.post("/messages", {
+
+      // const response = await this.$axios.$post('/.netlify/functions/contact-mail', {
+      this.$axios
+        .post("/messages", {
           name: this.name,
           email: this.email,
           message: this.message,
+        })
+        .then((response) => {
+          this.loading = false;
+          this.name = '';
+          this.email = '';
+          this.message = '';
+          this.$toast.success("Mail Sent");
+        })
+        .catch((error) => {
+          this.loading = false;
+          this.$toast.error(error);
+        })
+        .finally(() => {
+          this.loading = false;
         });
-        this.$toast.success("Mail Sent");
-        this.loading = false;
-        this.name = "";
-        this.email = "";
-        this.message = "";
-      } catch (error) {
-        this.loading = false;
-        this.$toast.error(error);
-      }
     },
   },
 };
