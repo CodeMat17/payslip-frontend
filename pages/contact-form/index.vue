@@ -153,7 +153,7 @@ export default {
       } else {
         // Otherwise the form will try to go through.
         this.$axios
-          .post("/messages", {
+          .post("/.netlify/functions/contact-mail", {
             name: this.name,
             email: this.email,
             staffNo: this.staffNo,
