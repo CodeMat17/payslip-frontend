@@ -118,7 +118,7 @@
               type="sumbit"
               class="block w-full rounded-md text-gray-300 font-bold text-xl p-3 text-center bg-gray-700 tracking-widest uppercase"
             >
-              {{ loading ? "Please wait.." : "Send" }}
+              {{ loading ? "Please wait..." : "Send" }}
             </button>
           </form>
         </div>
