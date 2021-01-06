@@ -66,7 +66,7 @@
               {{ loading ? "Please wait..." : "login" }}
             </button>
 
-            <p class="text-gray-400 text-md mt-4">
+            <p class="text-gray-400 text-sm mt-4">
               Forgot password?
               <n-link to="/forgot-password"
                 ><span class="text-yellow-500 font-semibold"
@@ -75,7 +75,7 @@
               >
             </p>
 
-            <p class="text-gray-400 text-md mt-2">
+            <p class="text-gray-400 text-sm mt-2">
               Have no account?
               <n-link to="/register"
                 ><span class="text-yellow-500 font-semibold"

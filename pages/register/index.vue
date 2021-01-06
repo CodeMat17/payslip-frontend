@@ -154,7 +154,7 @@
               {{ loading ? "Please wait..." : "register" }}
             </button>
 
-            <p class="text-gray-400 text-lg mt-4">
+            <p class="text-gray-400 text-sm mt-4">
               Already registered?
               <n-link to="/login"
                 ><span class="text-yellow-500 font-semibold"
