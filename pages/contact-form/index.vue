@@ -14,10 +14,11 @@
         page, and acted like you successfully sent the form.
       </div>
     </div>
+
     <div v-else>
       <div
         v-if="mailSent"
-        class="mt-16 ml-4 mr-4 max-w-lg mx-auto text-center tracking-widest bg-green-300 py-6 rounded-lg"
+        class="mt-32 max-w-lg mx-auto text-center tracking-widest bg-green-300 py-6 rounded-lg"
       >
         <p class="text-2xl text-green-700">Mail submitted!</p>
         <button
@@ -51,8 +52,15 @@
               />
             </div>
             <div class="hidden">
-              <label class="sr-only">Don’t fill this out if you're human: </label>
-              <input v-model="bot" name="bot-field" placeholder="This field is only for the robots." class="block w-full py-3 transition ease-in-out duration-150"/>
+              <label class="sr-only"
+                >Don’t fill this out if you're human:
+              </label>
+              <input
+                v-model="bot"
+                name="bot-field"
+                placeholder="This field is only for the robots."
+                class="block w-full py-3 transition ease-in-out duration-150"
+              />
             </div>
             <div>
               <label for="staffNo"
@@ -146,7 +154,7 @@ export default {
   methods: {
     sendMsg() {
       this.loading = true;
-      /* This is where I check if the bot field has a value. 
+      /* This is where I check if the bot field has a value.
          Only bots will fill this out. */
       if (this.bot != null) {
         this.isBot = true;
@@ -179,6 +187,7 @@ export default {
           });
       }
     },
+   
   },
 };
 </script>
