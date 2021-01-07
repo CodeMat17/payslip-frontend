@@ -114,8 +114,10 @@ export default {
   },
   methods: {
     async login() {
+      
       this.loading = true;
-      if (!this.$v.$anyError) {
+      this.$v.$touch();
+      if (!this.$v.$invalid) {
         try {
           await this.$auth.loginWith("local", {
             data: {

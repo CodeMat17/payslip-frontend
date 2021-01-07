@@ -148,8 +148,8 @@
             <br />
 
             <button
-              type="submit"
-              @click="toggleModal = true"
+              type="button"
+              @click="openModal"
               class="uppercase text-gray-700 text-xl bg-yellow-500 mt-2 font-bold tracking-widest py-4 rounded block w-full focus:outline-none hover:bg-yellow-600 hover:text-gray-300"
             >
               {{ loading ? "Please wait..." : "register" }}
@@ -170,7 +170,7 @@
           >
             <div class="relative w-auto mx-4 max-w-2xl">
               <div
-                class="pt-4 rounded-lg overflow-hidden bg-white w-full shadow-2xl flex flex-col"
+                class="pt-4 rounded-lg overflow-hidden bg-white w-full shadow-2xl flex flex-col border border-pink-600"
               >
                 <div class="text-2xl text-gray-700 font-bold text-center px-4">
                   Please confirm your information
@@ -180,16 +180,17 @@
 
                 <p class="tracking-widest px-4 mb-4">Email: {{ email }}</p>
                 <div
-                  class="w-full py-4 block flex justify-between items-center px-4 bg-gray-700"
+                  class="w-full py-4 block flex justify-between items-center px-4 bg-pink-600"
                 >
                   <button
-                    @click="toggleModal = false"
+                    type="button"
+                    @click="closeModal"
                     class="text-white font-bold tracking-widest text-lg hover:text-gray-500"
                   >
                     Cancel
                   </button>
                   <button
-                    @click="confirmModal = true"
+                    type="submit"
                     class="text-white font-bold tracking-widest text-lg hover:text-gray-500 focus:outline-none"
                   >
                     Yes, I confirm
@@ -198,6 +199,10 @@
               </div>
             </div>
           </div>
+          <div
+            v-if="toggleModal"
+            class="absolute inset-0 z-40 opacity-25 bg-black"
+          ></div>
         </form>
       </div>
     </div>
@@ -230,6 +235,7 @@ export default {
       loading: false,
       toggleModal: false,
       confirmModal: false,
+      fillFields: false,
     };
   },
   validations: {
@@ -256,37 +262,40 @@ export default {
     },
   },
   methods: {
-    async register() {
-      if (!this.$v.$anyError) {
+    openModal() {
+      this.$v.$touch();
+      if (!this.$v.$invalid) {
         this.toggleModal = true;
-        if (this.confirmModal === true) {
-          this.toggleModal = false;
-          this.loading = true;
-          try {
-            this.$axios.setToken(false);
-            await this.$axios.post("auth/local/register", {
-              staffNo: this.staffNo,
-              username: this.username,
-              email: this.email,
-              password: this.password,
-            });
-            this.$toast.success("Registration successful. You can login now.");
-            this.loading = false;
-            this.$router.push("/login");
-            this.staffNo = null;
-            this.username = "";
-            this.email = "";
-            this.password = "";
-            this.confirmPassword = "";
-          } catch (e) {
-            this.loading = false;
-            this.$toast.error(e.response.data.message[0].messages[0].message);
-          }
-        }
       } else {
-        this.loading = false;
-        this.$toast.error("All fields are REQUIRED. See the red line(s)");
+        this.$toast.error("All fields are *REQUIRED*. Fill them please.");
       }
+    },
+    async register() {
+      this.loading = true;
+      this.toggleModal = false;
+      try {
+        this.$axios.setToken(false);
+        await this.$axios.post("auth/local/register", {
+          staffNo: this.staffNo,
+          username: this.username,
+          email: this.email,
+          password: this.password,
+        });
+        this.$toast.success("Registration successful. You can login now.");
+        this.loading = false;
+        this.$router.push("/login");
+        this.staffNo = null;
+        this.username = "";
+        this.email = "";
+        this.password = "";
+        this.confirmPassword = "";
+      } catch (e) {
+        this.loading = false;
+        this.$toast.error(e.response.data.message[0].messages[0].message);
+      }
+    },
+    closeModal() {
+      this.toggleModal = false;
     },
   },
 };
