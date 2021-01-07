@@ -28,7 +28,7 @@
               placeholder="Enter your name"
               autocomplete="given-name"
               aria-describedby="username"
-              class="rounded block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
+              class="rounded block w-full p-2 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
             />
             <span
               v-if="!$v.username.required && $v.username.$dirty"
@@ -53,17 +53,42 @@
               placeholder="Enter your staff No. here"
               autocomplete="given-name"
               aria-describedby="staffNo"
-              class="rounded block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
+              class="rounded block w-full p-2 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
             />
             <span
               v-if="!$v.staffNo.required && $v.staffNo.$dirty"
               class="text-red-500"
-              >StaffNo is required</span
+              >Staff No is required</span
             >
             <span
               v-if="!$v.staffNo.between && $v.staffNo.$dirty"
               class="text-red-500"
-              >StaffNo is between 100 - 999</span
+              >Staff No is between 100 - 999</span
+            >
+            <br />
+
+            <label class="text-gray-500"
+              ><span class="text-red-500">*</span>Phone No.</label
+            >
+            <input
+              type="number"
+              id="phoneNo"
+              name="phoneNo"
+              v-model.trim="$v.phoneNo.$model"
+              placeholder="Enter your phone No. here"
+              autocomplete="given-name"
+              aria-describedby="phoneNo"
+              class="rounded block w-full p-2 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
+            />
+            <span
+              v-if="!$v.phoneNo.required && $v.phoneNo.$dirty"
+              class="text-red-500"
+              >Phone No is required</span
+            >
+            <span
+              v-if="!$v.phoneNo.maxLength && $v.phoneNo.$dirty"
+              class="text-red-500"
+              >Phone No cannot be more than 11 digits</span
             >
             <br />
 
@@ -78,7 +103,7 @@
               placeholder="Enter your email here"
               autocomplete="given-name"
               aria-describedby="email"
-              class="rounded block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
+              class="rounded block w-full p-2 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
             />
             <span
               v-if="!$v.email.required && $v.email.$dirty"
@@ -101,7 +126,7 @@
               placeholder="Enter your password here"
               autocomplete="given-name"
               aria-describedby="password"
-              class="rounded block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
+              class="rounded block w-full p-2 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
             />
             <span
               v-if="!$v.password.required && $v.password.$dirty"
@@ -133,7 +158,7 @@
               placeholder="Confirm your password here"
               autocomplete="given-name"
               aria-describedby="confirmPassword"
-              class="rounded block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
+              class="rounded block w-full p-2 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
             />
             <span
               v-if="!$v.confirmPassword.required && $v.confirmPassword.$dirty"
@@ -177,7 +202,7 @@
                 </div>
                 <p class="tracking-widest px-4 mt-4">Name: {{ username }}</p>
                 <p class="tracking-widest px-4">Staff No: {{ staffNo }}</p>
-
+                <p class="tracking-widest px-4">Phone No: {{ phoneNo }}</p>
                 <p class="tracking-widest px-4 mb-4">Email: {{ email }}</p>
                 <div
                   class="w-full py-4 block flex justify-between items-center px-4 bg-pink-600"
@@ -228,6 +253,7 @@ export default {
   data() {
     return {
       staffNo: null,
+      phoneNo: null,
       username: "",
       email: "",
       password: "",
@@ -242,6 +268,10 @@ export default {
     staffNo: {
       required,
       between: between(100, 999),
+    },
+    phoneNo: {
+      required,
+      maxLength: maxLength(11),
     },
     username: {
       required,
@@ -278,6 +308,7 @@ export default {
         await this.$axios.post("auth/local/register", {
           staffNo: this.staffNo,
           username: this.username,
+          phoneNo: this.phoneNo,
           email: this.email,
           password: this.password,
         });
@@ -285,6 +316,7 @@ export default {
         this.loading = false;
         this.$router.push("/login");
         this.staffNo = null;
+        this.phoneNo = null;
         this.username = "";
         this.email = "";
         this.password = "";
